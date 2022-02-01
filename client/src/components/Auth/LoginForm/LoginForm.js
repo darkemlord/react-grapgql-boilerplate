@@ -16,7 +16,7 @@ export const LoginForm = () => {
         placeholder='password'
         name='password'
     />
-
+    <Button type='submit' className='btn-submit'>Login</Button>
    </Form>
   );
 };
