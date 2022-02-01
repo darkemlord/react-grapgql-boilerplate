@@ -17,10 +17,10 @@ export const RegisterForm = (props) => {
           .required(true),
         password: Yup.string()
           .required('la contrasena es obli')
-          .oneOf([Yup.ref("confirmPassword")], 'las contras no son iguales'),
+          .oneOf([Yup.ref("confirmPassword")], 'password does not match'),
         confirmPassword: Yup.string()
           .required('la contrasena es obli')
-          .oneOf([Yup.ref("password")], 'las contras no son iguales'),
+          .oneOf([Yup.ref("password")], 'password does not match'),
       }
     ),
     onSubmit: (formValue) => {
@@ -66,7 +66,7 @@ export const RegisterForm = (props) => {
         name="password"
         autoComplete="current-password"
         onChange={formik.handleChange}
-        error={formik.errors.password}
+        error={formik.errors.password && true}
       />
 
       <Form.Input
@@ -75,7 +75,7 @@ export const RegisterForm = (props) => {
         name="confirmPassword"
         autoComplete="current-password"
         onChange={formik.handleChange}
-        error={formik.errors.confirmPassword}
+        error={formik.errors.confirmPassword && true}
       />
 
       <Button type="submit" className='btn-submit'>Sign In</Button>
