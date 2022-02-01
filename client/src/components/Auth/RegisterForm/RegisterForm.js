@@ -3,7 +3,9 @@ import { Form, Button } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../../../gql/user'
+import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 export const RegisterForm = (props) => {
   const { setShowLogin } = props;
@@ -32,14 +34,15 @@ export const RegisterForm = (props) => {
         const newUser = formData;
         delete newUser.confirmPassword;
 
-        const result = await register({
+       await register({
           variables: {
             input: newUser
           }
         })
-        console.log(result);
+        toast.success('User registered!');
       } catch(err) {
-        console.log(err.message)
+        toast.error(err.message);
+        setShowLogin(true);
       }
     }
   });
