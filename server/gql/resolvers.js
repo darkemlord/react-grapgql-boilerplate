@@ -13,7 +13,6 @@ const resolvers = {
       const newUser = input
       newUser.email = newUser.email.toLowerCase();
       newUser.username = newUser.username.toLowerCase();
-      newUser.name = newUser.name.toLowerCase();
 
       const { email, username, password } = newUser;
 
