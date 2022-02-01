@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Image } from 'semantic-ui-react';
 import icon from '../../assets/png/favicon.png'
 import RegisterForm from '../../components/Auth/RegisterForm';
+import LoginForm from '../../components/Auth/LoginForm';
 import './Auth.scss';
 
 export const Auth = () => {
@@ -11,7 +12,7 @@ export const Auth = () => {
     < Container fluid className='auth'>
       <Image src={icon} size='small'/>
       <div className='container-form'>
-        {showLogin ? <p>formulario de login </p>: <RegisterForm setShowLogin={setShowLogin} />}
+        {showLogin ? <LoginForm />: <RegisterForm setShowLogin={setShowLogin} />}
       </div>
 
       <div className='change-form'>
