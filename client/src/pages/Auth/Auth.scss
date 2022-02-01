@@ -29,4 +29,15 @@
     border-radius: 5px;
     text-align: center;
   }
+
+  span {
+    color: $action;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 10px;
+    &:hover{
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }

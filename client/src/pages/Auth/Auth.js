@@ -4,6 +4,8 @@ import icon from '../../assets/png/favicon.png'
 import './Auth.scss';
 
 export const Auth = () => {
+  const [showLogin, setShowLogin] = useState(true);
+
   return (
     < Container fluid className='auth'>
       <Image src={icon} size='small'/>
@@ -12,7 +14,20 @@ export const Auth = () => {
       </div>
 
       <div className='change-form'>
-        <p>do you have not an account?</p>
+        <p>
+          {showLogin ? (
+            <>
+              do you have not an account?
+              <span onClick={() => setShowLogin(!showLogin)}>Sign In here</span>
+            </>
+          ): (
+            <>
+              Login with your account
+              <span onClick={() => setShowLogin(!showLogin)}>Login</span>
+            </>
+          )
+        }
+      </p>
       </div>
     </Container>
   )
