@@ -11,30 +11,35 @@ export const RegisterForm = (props) => {
         type="text"
         placeholder="name and lastname"
         name="name"
+        autoComplete="name"
       />
 
       <Form.Input
         type="text"
         placeholder="Username"
         name="username"
+        autoComplete="username"
       />
 
       <Form.Input
         type="email"
         placeholder="email"
         name="email"
+        autoComplete="email"
       />
 
       <Form.Input
         type="password"
         placeholder="password"
         name="password"
+        autoComplete="current-password"
       />
 
       <Form.Input
         type="password"
         placeholder="confirm password"
         name="confirmPassword"
+        autoComplete="current-password"
       />
 
       <Button className='btn-submit'>Sign In</Button>
