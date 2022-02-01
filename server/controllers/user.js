@@ -35,4 +35,9 @@ const getUser = () => {
   console.log('hello from the get user');
 }
 
-module.exports = { register, getUser }
+const login = async (input) => {
+  const { email, password } = input;
+  console.log("Email: " + email);
+  console.log("Password: " + password);
+}
+module.exports = { register, getUser, login }
