@@ -1,11 +1,9 @@
 const userController = require('../controllers/user');
 
+
 const resolvers = {
   Query: {
-    getUser: () => {
-      console.log('hello papis')
-      return null
-    },
+    getUser: () => userController.getUser()
   },
   Mutation: {
     //user

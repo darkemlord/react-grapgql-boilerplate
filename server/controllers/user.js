@@ -29,6 +29,10 @@ const register = async (input) => {
   } catch(err) {
     console.log(err)
   }
+};
+
+const getUser = () => {
+  console.log('hello from the get user');
 }
 
-module.exports = { register }
+module.exports = { register, getUser }
