@@ -37,8 +37,9 @@ export const RegisterForm = (props) => {
             input: newUser
           }
         })
+        console.log(result);
       } catch(err) {
-        console.log(err)
+        console.log(err.message)
       }
     }
   });
