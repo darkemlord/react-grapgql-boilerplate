@@ -3,10 +3,14 @@ import { Form, Button } from 'semantic-ui-react';
 
 export const RegisterForm = (props) => {
   const { setShowLogin } = props;
+
+  const onSubmit = () => {
+    console.log('form sended')
+  }
   return (
   <>
     <h2 className='register-form'>Sign In here</h2>
-    <Form className='register-form'>
+    <Form className='register-form' onSubmit={onSubmit}>
       <Form.Input
         type="text"
         placeholder="name and lastname"
@@ -42,7 +46,7 @@ export const RegisterForm = (props) => {
         autoComplete="current-password"
       />
 
-      <Button className='btn-submit'>Sign In</Button>
+      <Button type="submit" className='btn-submit'>Sign In</Button>
     </Form>
   </>
   )
