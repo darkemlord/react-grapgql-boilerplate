@@ -75,7 +75,7 @@ export const RegisterForm = (props) => {
         name="email"
         autoComplete="email"
         onChange={formik.handleChange}
-        error={formik.errors.email}
+        error={formik.errors.email && true}
       />
 
       <Form.Input
