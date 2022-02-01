@@ -1,5 +1,20 @@
 const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: ".env"});
+//GET login token function
+const createToken = (user, SECRET_KEY, expiresIn) => {
+  const {id, name, email, username} = user;
+  const payload = {
+    id,
+    name,
+    email,
+    username
+  };
+  return jwt.sign(payload, SECRET_KEY, { expiresIn});
+}
 
 const register = async (input) => {
   const newUser = input
@@ -42,11 +57,13 @@ const login = async (input) => {
   const userFound = await User.findOne({ email: email.toLowerCase() });
   if(!userFound) throw new Error("Error in email or password");
 
+  // Compare the password
   const passwordSuccess = await bcryptjs.compare(password, userFound.password);
   if(!passwordSuccess) throw Error("Error in email or password");
 
+  //get the login token
   return {
-    token: "amo a mi hijo"
+    token: createToken(userFound, process.env.SECRET_KEY, "24h")
   }
 }
 module.exports = { register, getUser, login }
