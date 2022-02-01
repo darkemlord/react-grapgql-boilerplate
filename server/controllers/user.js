@@ -37,7 +37,16 @@ const getUser = () => {
 
 const login = async (input) => {
   const { email, password } = input;
-  console.log("Email: " + email);
-  console.log("Password: " + password);
+
+  // check if the email exist
+  const userFound = await User.findOne({ email: email.toLowerCase() });
+  if(!userFound) throw new Error("Error in email or password");
+
+  const passwordSuccess = await bcryptjs.compare(password, userFound.password);
+  if(!passwordSuccess) throw Error("Error in email or password");
+
+  return {
+    token: "amo a mi hijo"
+  }
 }
 module.exports = { register, getUser, login }
