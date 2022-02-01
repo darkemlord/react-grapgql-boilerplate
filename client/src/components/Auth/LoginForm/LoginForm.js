@@ -1,11 +1,23 @@
 import React from 'react';
 import './LoginForm.scss';
+import { Form, Button} from 'semantic-ui-react';
 
 export const LoginForm = () => {
   return(
-    <>
-      <h1>hello from login form</h1>
-    </>
+   <Form className='login-form'>
+    <Form.Input
+        type='text'
+        placeholder='email'
+        name='email'
+     />
+
+    <Form.Input
+        type='password'
+        placeholder='password'
+        name='password'
+    />
+
+   </Form>
   );
 };
 
