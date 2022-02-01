@@ -9,12 +9,14 @@ export const LoginForm = () => {
         type='text'
         placeholder='email'
         name='email'
+        autoComplete='email'
      />
 
     <Form.Input
         type='password'
         placeholder='password'
         name='password'
+        autoComplete='password'
     />
     <Button type='submit' className='btn-submit'>Login</Button>
    </Form>
