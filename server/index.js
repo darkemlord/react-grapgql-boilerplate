@@ -12,9 +12,7 @@ mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }, () => {
-  app.listen(3000, () => {
   server();
-})
 });
 
 const server = () => {

@@ -13,7 +13,7 @@ const createToken = (user, SECRET_KEY, expiresIn) => {
     email,
     username
   };
-  return jwt.sign(payload, SECRET_KEY, { expiresIn});
+  return jwt.sign(payload, SECRET_KEY, { expiresIn });
 }
 
 const register = async (input) => {
