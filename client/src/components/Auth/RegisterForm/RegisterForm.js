@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 
 export const RegisterForm = (props) => {
   const { setShowLogin } = props;
-
   const [register] = useMutation(REGISTER_USER)
 
   const formik = useFormik({
@@ -40,6 +39,7 @@ export const RegisterForm = (props) => {
           }
         })
         toast.success('User registered!');
+        setShowLogin(true);
       } catch(err) {
         toast.error(err.message);
         setShowLogin(true);
