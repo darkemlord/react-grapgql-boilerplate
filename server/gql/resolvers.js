@@ -1,5 +1,5 @@
 const User = require('../models/user');
-
+const bcryptjs = require('bcryptjs');
 const resolvers = {
   Query: {
     getUser: () => {
@@ -20,9 +20,14 @@ const resolvers = {
 
       const foundEmail = await User.findOne({ email });
       if(foundEmail) throw new Error("the email is already in use");
+
       // Check if the username exist
       const foundUserName = await User.findOne({ username });
-      if(foundUserName) throw new Error("The username already exist")
+      if(foundUserName) throw new Error("The username already exist");
+
+      // Encrypt
+      const salt = await bcryptjs.genSaltSync(10);
+      newUser.password = await bcryptjs.hash(password);
 
       try{
         const user = new User(newUser);
