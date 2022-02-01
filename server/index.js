@@ -11,8 +11,6 @@ dotenv.config({ path: ".env"})
 mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: true,
-  useCreateIndex: true
 }, () => {
   app.listen(3000, () => {
   server();
