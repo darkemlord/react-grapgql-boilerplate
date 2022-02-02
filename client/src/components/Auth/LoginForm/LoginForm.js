@@ -25,7 +25,8 @@ export const LoginForm = () => {
             input: formData
           }
         })
-        console.log(data.login.token);
+        const { token } = data.login
+        setToken(token);
       } catch (err) {
         setError(err.message)
       }
