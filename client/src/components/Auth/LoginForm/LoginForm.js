@@ -5,8 +5,9 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../../gql/user'
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import { setToken } from '../../../utils/token';
+import { setToken, decodeToken } from '../../../utils/token';
 import useAuth from '../../../hooks/useAuth'
+
 export const LoginForm = () => {
   const [ error , setError ] = useState('');
   const [ login ] = useMutation(LOGIN)
@@ -29,7 +30,7 @@ export const LoginForm = () => {
         })
         const { token } = data.login
         setToken(token);
-        setUser(token);
+        setUser(decodeToken(token));
       } catch (err) {
         setError(err.message)
       }
