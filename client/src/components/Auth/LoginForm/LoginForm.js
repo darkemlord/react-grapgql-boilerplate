@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginForm.scss';
 import { Form, Button} from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
@@ -7,6 +7,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 export const LoginForm = () => {
+  const [ error , setError ] = useState('');
   const [ login ] = useMutation(LOGIN)
 
   const formik = useFormik({
@@ -17,15 +18,14 @@ export const LoginForm = () => {
     }),
     onSubmit: async (formData) => {
       try {
-        const logUser = formData;
         const getToken = await login({
           variables: {
-            input: logUser
+            input: formData
           }
         })
         console.log(getToken);
       } catch (err) {
-        console.log(err)
+        setError(err.message)
       }
     }
   });
@@ -53,6 +53,7 @@ export const LoginForm = () => {
         error={formik.errors.password}
     />
     <Button type='submit' className='btn-submit'>Login</Button>
+    { error && <p className='error-submit'>{error}</p> }
    </Form>
   );
 };
