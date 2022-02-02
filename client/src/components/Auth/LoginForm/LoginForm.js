@@ -1,18 +1,32 @@
 import React from 'react';
 import './LoginForm.scss';
 import { Form, Button} from 'semantic-ui-react';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../../gql/user'
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 export const LoginForm = () => {
+  const [ login ] = useMutation(LOGIN)
+
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object({
       email: Yup.string().email(true).required(true),
       password: Yup.string().required(true)
     }),
-    onSubmit: (formData) => {
-      console.log(formData)
+    onSubmit: async (formData) => {
+      try {
+        const logUser = formData;
+        const getToken = await login({
+          variables: {
+            input: logUser
+          }
+        })
+        console.log(getToken);
+      } catch (err) {
+        console.log(err)
+      }
     }
   });
 
