@@ -14,13 +14,14 @@ export const LoginForm = () => {
   });
 
   return(
-   <Form className='login-form'>
+   <Form className='login-form' onSubmit={formik.handleSubmit}>
      <h2>Login and share your pictures!</h2>
     <Form.Input
         type='text'
         placeholder='email'
         name='email'
         autoComplete='email'
+        onChange={formik.handleChange}
      />
 
     <Form.Input
@@ -28,6 +29,7 @@ export const LoginForm = () => {
         placeholder='password'
         name='password'
         autoComplete='password'
+        onChange={formik.handleChange}
     />
     <Button type='submit' className='btn-submit'>Login</Button>
    </Form>
@@ -36,10 +38,9 @@ export const LoginForm = () => {
 
 const initialValues = () => {
   return {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   }
-
 }
 
 export default LoginForm;
