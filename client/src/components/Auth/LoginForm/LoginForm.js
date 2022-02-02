@@ -17,13 +17,14 @@ export const LoginForm = () => {
       password: Yup.string().required(true)
     }),
     onSubmit: async (formData) => {
+      setError('');
       try {
-        const getToken = await login({
+        const { data } = await login({
           variables: {
             input: formData
           }
         })
-        console.log(getToken);
+        console.log(data.login.token);
       } catch (err) {
         setError(err.message)
       }
