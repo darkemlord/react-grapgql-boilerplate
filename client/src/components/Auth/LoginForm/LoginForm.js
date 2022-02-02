@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../../gql/user'
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import { setToken } from '../../../utils/token';
 
 export const LoginForm = () => {
   const [ error , setError ] = useState('');
