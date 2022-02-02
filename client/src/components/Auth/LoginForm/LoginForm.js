@@ -2,12 +2,15 @@ import React from 'react';
 import './LoginForm.scss';
 import { Form, Button} from 'semantic-ui-react';
 import {useFormik} from 'formik';
+import * as Yup from 'yup';
 
 export const LoginForm = () => {
-
   const formik = useFormik({
     initialValues: initialValues(),
-    validationSchema: null,
+    validationSchema: Yup.object({
+      email: Yup.string().email().required(true),
+      password: Yup.string().required(true)
+    }),
     onSubmit: (formData) => {
       console.log(formData)
     }
@@ -21,6 +24,7 @@ export const LoginForm = () => {
         placeholder='email'
         name='email'
         autoComplete='email'
+        value={formik.values.email}
         onChange={formik.handleChange}
      />
 
@@ -29,6 +33,7 @@ export const LoginForm = () => {
         placeholder='password'
         name='password'
         autoComplete='password'
+        value={formik.values.password}
         onChange={formik.handleChange}
     />
     <Button type='submit' className='btn-submit'>Login</Button>
