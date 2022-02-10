@@ -8,4 +8,16 @@ const routes = [
     component: Home,
     exact: true
   },
+
+  {
+    path: '/user',
+    component: User,
+    exact: false
+  },
+
+  {
+    component: Error404,
+  },
 ]
+
+export default routes;
