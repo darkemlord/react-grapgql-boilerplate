@@ -5,18 +5,18 @@ import Error404 from '../pages/Error404';
 const routes = [
   {
     path: '/',
-    component: Home,
+    element: <Home />,
     exact: true
   },
 
   {
     path: '/user',
-    component: User,
+    element: <User />,
     exact: false
   },
 
   {
-    component: Error404,
+    element: <Error404 />,
   },
 ]
 
