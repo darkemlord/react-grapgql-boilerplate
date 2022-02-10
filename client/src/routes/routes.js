@@ -2,6 +2,8 @@ import Home from '../pages/Home';
 import User from '../pages/User';
 import Error404 from '../pages/Error404';
 
+
+// Pages
 const routes = [
   {
     path: '/',
@@ -10,7 +12,7 @@ const routes = [
   },
 
   {
-    path: '/user',
+    path: '/:username',
     element: <User />,
     exact: true
   },
