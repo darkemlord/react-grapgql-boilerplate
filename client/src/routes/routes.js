@@ -1,7 +1,6 @@
 import Home from '../pages/Home';
 import User from '../pages/User';
 import Error404 from '../pages/Error404';
-import { Navigate } from 'react-router-dom';
 
 const routes = [
   {
@@ -17,13 +16,9 @@ const routes = [
   },
 
   {
-    path: '/error404',
+    path: '*',
     element: <Error404 />,
     exact: true
-  },
-  {
-    path: '*',
-    element: <Navigate to='/error404'/>,
   },
 ]
 
